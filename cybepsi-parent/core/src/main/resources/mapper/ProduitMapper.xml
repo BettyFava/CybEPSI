@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.epsi.cybepsi.core.dao.ProduitDao">
+
+<resultMap id="Produit_ResultMap" type="com.epsi.cybepsi.core.entite.Produit">
+		<id property="id" column="idProduit" />
+		<result property="nom" column="nomProduit" />
+		<result property="description" column="descriptionProduit" />
+		<result property="prix" column="prixProduit" />
+		<association property="sousCategorie" column="idSousCategorieProduit" javaType="SousCategorie" select="selectSousCategorie"/>
+		</resultMap>
+		
+<resultMap id="Produit_InfoSupp_ResultMap" type="com.java.ecommerce.model.Produit">
+		<id property="id" column="idProduit" />
+		<result property="nom" column="nomProduit" />
+		<result property="description" column="descriptionProduit" />
+		<result property="prix" column="prixProduit" />
+		<result property="dimensions" column="dimensionsProduit"/>
+		<result property="poids" column="poidsProduit"/>
+		<result property="stock" column="quantiteStock"/>
+		</resultMap>
+		
+  <select id="getProduitById" parameterType="int" resultMap="Produit_ResultMap">
+     SELECT 
+    	idProduit, nomProduit, descriptionProduit, prixProduit
+     FROM Produit
+     WHERE idProduit = #{id}
+  </select>
+  
+    <select id="getProduitsParCategories" parameterType="int" resultMap="Produit_ResultMap">
+     SELECT 
+    	idProduit, nomProduit, descriptionProduit, prixProduit
+     FROM Produit
+     WHERE idProduit = #{id}
+  </select>
+  
+  
+    <select id="getInformationsSuppProduit" parameterType="int" resultMap="Produit_InfoSupp_ResultMap">
+     SELECT 
+    	idProduit, nomProduit, descriptionProduit, prixProduit, poidsProduit, dimensionsProduit, quantiteStock
+     FROM Produit
+     WHERE idProduit = #{id}
+  </select>
+  
+  <select id="getAllProduits" resultMap="Produit_ResultMap">
+   SELECT idProduit, nomProduit, descriptionProduit, prixProduit FROM Produit
+  </select>
+
+</mapper>

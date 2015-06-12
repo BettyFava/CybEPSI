@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.epsi.cybepsi</groupId>
+  <artifactId>cybepsi-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>CYBEPSI</name>
+
+	<modules>
+		<module>core</module>
+		<module>web</module>
+	</modules>
+
+	<properties>
+
+		<com.epsi.cybepsi.version>0.0.1-SNAPSHOT</com.epsi.cybepsi.version>
+		<com.epsi.cybepsi.core.version>1.0-SNAPSHOT</com.epsi.cybepsi.core.version>
+		<com.epsi.cybepsi.web.version>1.0-SNAPSHOT</com.epsi.cybepsi.web.version>
+
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+
+		<!-- MyBatis -->
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<mybatis-ehcache.version>1.0.3</mybatis-ehcache.version>
+		<mybatis.version>3.2.8</mybatis.version>
+
+
+		<!-- SpringSecurity -->
+		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
+
+
+		<!-- Jackson JSON mapper -->
+		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+		<org.json.version>20140107</org.json.version>
+
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+		<org.slf4j.version>1.7.7</org.slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+		<org.easytesting.version>2.0M10</org.easytesting.version>
+
+		<jstl.version>1.2</jstl.version>
+
+		<src.dir>src/main/java</src.dir>
+
+	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.3.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<build>
+		<!-- ajout du numero de build au package genere -->
+		<!-- <finalName>${project.artifactId}-${project.version}-build${buildNumber}</finalName> -->
+
+		<plugins>
+			<!-- Numero de build -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>true</doCheck>
+					<doUpdate>true</doUpdate>
+					<format>{0,date,yyyyMMdd}{1,number}</format>
+					<items>
+						<item>timestamp</item>
+						<item>buildNumber0</item>
+					</items>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven.site.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>
