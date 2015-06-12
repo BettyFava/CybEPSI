@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.epsi.cybepsi.core.dao.clientDao">
+<mapper namespace="com.epsi.cybepsi.core.dao.ClientDao">
 
 	<resultMap type="Client" id="Client_ResultMap">
 		<result column="emailClient" property="email" />

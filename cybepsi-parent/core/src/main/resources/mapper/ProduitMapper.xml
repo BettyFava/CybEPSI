@@ -9,10 +9,9 @@
 		<result property="nom" column="nomProduit" />
 		<result property="description" column="descriptionProduit" />
 		<result property="prix" column="prixProduit" />
-		<association property="sousCategorie" column="idSousCategorieProduit" javaType="SousCategorie" select="selectSousCategorie"/>
 		</resultMap>
 		
-<resultMap id="Produit_InfoSupp_ResultMap" type="com.java.ecommerce.model.Produit">
+<resultMap id="Produit_InfoSupp_ResultMap" type="com.epsi.cybepsi.core.entite.Produit">
 		<id property="id" column="idProduit" />
 		<result property="nom" column="nomProduit" />
 		<result property="description" column="descriptionProduit" />

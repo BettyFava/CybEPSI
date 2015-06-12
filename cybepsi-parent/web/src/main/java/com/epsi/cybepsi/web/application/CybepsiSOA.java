@@ -22,7 +22,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@ComponentScan(basePackages="com.epsi.cybepsi.web")
+@ComponentScan(basePackages="com.epsi.cybepsi.core")
 public class CybepsiSOA  {
 	
 	    public static void main(String[] args) {
