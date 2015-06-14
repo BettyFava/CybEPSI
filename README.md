@@ -20,3 +20,5 @@ Dans ce dépot sont disponibles, en plus du code :
 - les requêtes SQL préparatoires
 
 
+Notre travail est disponible en faisant un clic droit sur le projet web / Run As / Java Application et en sélectionnant Cybepsi SOA.
+Puis en accedant à l'URL : http://localhost:8080/cybepsi via un explorateur internet. 
