@@ -1,0 +1,157 @@
+
+Conversation opened. 2 messages. All messages read.
+
+Skip to content
+Using Gmail with screen readers
+Florence
+Back
+Archive
+Spam
+Delete
+Move to 
+Labels 
+More 
+6 of 3,376
+ 
+SOA
+Inbox
+	x
+DEWAVRIN Camille
+	
+Attachments12 Jun (2 days ago)
+		
+to me, Jonathan
+   Translate message
+Turn off for: French
+Hello les amis,
+
+MAJ de requêtes SQL, plutôt destiné à  Jo (pour les paniers).
+
+Bonne soirée 😊
+
+Cam
+Attachments area
+Preview attachment SQL_SOA.txt
+[Text]
+knockaert jonathan
+	
+12 Jun (2 days ago)
+		
+to DEWAVRIN, me
+   Translate message
+Turn off for: French
+
+Merki! je vais regarder ça  :)
+	
+Click here to Reply, Reply to all or Forward
+3.46 GB (23%) of 15 GB used
+Manage
+Terms - Privacy
+Last account activity: 1 hour ago
+Details
+	
+	
+People (2)
+	Knockaert Jonathan
+Show details
+SQL_SOA.txt
+
+// Ensemble des produits
+SELECT libelle FROM CategorieProduit
+
+// Ensemble des sous catégories d un produit
+SELECT S.libelle
+FROM  "SousCategorieProduit" AS S
+INNER JOIN CategorieProduit AS C ON S.idCategorieProduit = C.idCategorieProduit
+WHERE C.libelle =  @libelleCategorieProduit
+
+// Quelques informations d un produit par recherche par nom
+SELECT P.idProduit, I.urlimage, nomProduit, prixProduit, quantiteStock
+FROM  "Produit" AS P
+INNER JOIN ImageProduit AS IP ON P.idProduit = IP.idProduit
+INNER JOIN Image AS I ON I.idImage = IP.idImage
+WHERE nomProduit LIKE  @nomproduit "%"
+
+// Ensemble des informations d un produit par recherche par nom
+SELECT * FROM "Produit" WHERE nomProduit LIKE @nomProduit & "%"
+
+// Insert base client (inscription)
+INSERT INTO 
+"Client"("emailClient", "password", "civiliteClient", "nomClient", "prenomClient", "societe", "dateNaissance", "adresseClient", "CPClient", "villeClient", "telClient", "dateConnexion") 
+VALUES (@email, @password, @civilite,@nom , @prenom, @societe, @dateNaissance, @adresse, @CodePostal, @ville, @tel, @dateconnexion)
+INSERT INTO "ImageClient"("idImage", "emailClient") VALUES (@img (ici mettre la valeur dune image par defaut venant de la bdd), @email)
+
+//Modification des données d un compte client
+UPDATE "Client" SET "nomClient"=@nom, "prenomClient"=@prenom WHERE emailClient = @emailducompte    (Nom, prénom)
+UPDATE "Client" SET "password"=@password, WHERE emailClient = @email 	(password)
+
+//Informations sur un client (pour le nom de compte et l image)
+SELECT nomClient, prenomClient, I.urlimage
+FROM Client AS C
+INNER JOIN ImageClient AS IP ON C.emailClient = IP.emailClient
+INNER JOIN Image AS I ON I.idImage = IP.idImage
+WHERE C.emailClient =  @emailclient
+
+//Suppresion d un compte client 
+DELETE FROM "Client" WHERE emailClient = @emailclient
+
+//Récuperation des commandes d un client (historique) 
+SELECT  "idCommande" ,  "dateCommande" ,  "etatCommande" ,  "loginAnonyme" 
+FROM  "Commande" 
+WHERE emailClient =  @emailclient
+
+//Quantite de stock pour produit par id
+SELECT quantiteStock, etatStock
+FROM  "Produit" 
+WHERE idProduit = @idProduit
+
+//GetCommandByID()
+SELECT  "idCommande" ,  "dateCommande" ,  "etatCommande" ,  "loginAnonyme" 
+FROM  "Commande" 
+WHERE idcommande = @idCommande
+
+GetAllCommand()
+SELECT "idCommande", "dateCommande", "etatCommande", "emailClient", "loginAnonyme" FROM "Commande" 
+
+GetAllCommandByEmail()
+SELECT "idCommande", "dateCommande", "etatCommande", "emailClient", "loginAnonyme" FROM "Commande" WHERE emailclient = @emailclient
+
+//Selectionne l idCommande si le panier existe pour l utilisateur depuis 7jours
+SELECT DISTINCT idCommande FROM Commande where dateCommande > DATE_SUB(Now(), INTERVAL 7 DAY) AND etatCommande NOT IN ('en cours') AND emailClient = 'monemailClient' order by dateCommande;
+
+SELECT DISTINCT idCommande FROM Commande where dateCommande > DATE_SUB(Now(), INTERVAL 7 DAY) AND etatCommande NOT IN ('en cours') AND loginAnonyme = 'idanonyme' order by dateCommande;
+
+//Si il n existe pas, on crée la commande
+INSERT INTO Commande"('dateCommande', 'etatCommande', 'emailClient', loginAnonyme) VALUES
+('2015-04-27', 'en cours', 'mon@adr.mail', NULL);
+
+INSERT INTO "Commande" ("dateCommande", "etatCommande", "emailClient", "loginAnonyme") VALUES
+('2015-04-27', 'en cours', NULL, 'monid');
+//Si il existe, nothing
+
+//Récupérer l idCommande de la nouvelle commande (je pense que vous devez faire ca en java)
+SELECT DISTINCT idCommande FROM Commande where dateCommande > DATE_SUB(Now(), INTERVAL 7 DAY) AND etatCommande NOT IN ('validée') AND emailClient = 'monemailClient' order by dateCommande;
+
+SELECT DISTINCT idCommande FROM Commande where dateCommande > DATE_SUB(Now(), INTERVAL 7 DAY) AND etatCommande NOT IN ('validée') AND loginAnonyme = 'idanonyme' order by dateCommande;
+
+//Créer la commande Produit contenant lidCommande et lidProduit // CreateInvoice()
+INSERT INTO CommandeProduit (quantiteProduit, remiseProduit, prixVenteUnitaire, idProduit) VALUES ('1','0','10',idProduit) where idCommande = idCommande;
+
+//SetQuantityProductsById()
+UPDATE "CommandeProduit" SET "quantiteProduit"= @newvaleur WHERE idProduit = @idproduit
+
+CreateLignCart()
+
+SetCommandState()
+UPDATE "Commande" SET  "etatCommande"=@newetat WHERE idcommande = @idcommande AND emailClient = @emailclient
+UPDATE "Commande" SET  "etatCommande"=@newetat WHERE idcommande = @idcommande AND loginAnonyme = @idanonyme
+
+SetCommandDate()
+UPDATE "Commande" SET dateCommande"=@newdate  WHERE idcommande = @idcommande AND emailClient = @emailclient
+UPDATE "Commande" SET dateCommande"=@newdate WHERE idcommande = @idcommande AND loginAnonyme = @idanonyme
+
+
+
+
+
+Displaying SQL_SOA.txt.
