@@ -15,4 +15,8 @@ A FAIRE
 L'écriture des contrôleurs afin que le site soit fonctionnel
 Et les DAO/Services manquants
 
+Dans ce dépot sont disponibles, en plus du code : 
+- le MCD 
+- les requêtes SQL préparatoires
+
 
