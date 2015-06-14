@@ -1,0 +1,223 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,900);
+body {
+  overflow-y: hidden;
+  font-family: "Lato";
+}
+.navbar-logo {
+  width: 100%;
+}
+.navbar-logo-div {
+  width: 30%;
+}
+.categories {
+  height: 100%;
+}
+.produit-main {
+  height: 400px;
+  overflow-y: auto;
+  margin-top: 6%;
+}
+.fix-height {
+  height: 100%;
+  overflow-y: auto;
+}
+.contenu-panier {
+  height: 480px;
+  width: 330px;
+  position: relative;
+  left: -168px;
+  z-index: 99;
+  display: none;
+  margin-top: 31px;
+  padding-top: 50px;
+  border: 4px solid #2c3e50;
+  border-radius: 10px;
+  position: relative;
+  background: #ccc;
+}
+.contenu-panier:after {
+  bottom: 100%;
+  left: 75%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.contenu-panier:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #2c3e50;
+  border-width: 30px;
+  margin-left: -30px;
+}
+.contenu-panier:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #2c3e50;
+  border-width: 36px;
+  margin-left: -36px;
+}
+.categories-menu {
+  height: 100%;
+  margin-top: -20px;
+}
+.height-max {
+  height: 100%;
+}
+.title-center {
+  text-align: center;
+}
+.title-modal-produit {
+  font-size: 25px;
+  font-weight: 500;
+  float: left;
+}
+.price-modal-produit {
+  font-size: 25px;
+  font-weight: bold;
+  float: right;
+}
+.content-modal-produit {
+  padding-top: 20px;
+}
+.ptn {
+  padding-top: 6%;
+}
+.ptl {
+  padding-top: 2%;
+}
+.phl {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.main-title {
+  font-size: 50px;
+  font-style: bold;
+}
+.search {
+  height: 31px;
+  padding-top: 50%;
+}
+.row-search {
+  padding-top: 5%;
+}
+.search-content {
+  height: 45px;
+  font-size: 25px;
+}
+.heigth-row-list {
+  display: inline;
+  height: 50px;
+  position: relative;
+  left: 13%;
+  top: 45px;
+}
+.btn-panier {
+  border-radius: 5px;
+}
+.title-menu {
+  font-size: 20px;
+  font-weight: 200;
+}
+.img-rounded {
+  margin-top: 5%;
+  width: 150px;
+}
+.img-rounded:hover {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  transition: all 1.3s ease-out;
+}
+.menu-list {
+  position: relative;
+  top: 3%;
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+}
+.var_nav {
+  position: relative;
+  background: #ccc;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.link_bg {
+  width: 70%;
+  height: 40px;
+  position: absolute;
+  background: #2c3e50;
+  color: #fff;
+  z-index: 2;
+}
+.link_bg i {
+  position: relative;
+}
+.link_title {
+  position:absolute;
+  width: 100%;
+  z-index: 3;
+  color: #fff;
+}
+.link_title:hover .icon {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.var_nav:hover .link_bg {
+  width:100%;
+  background:#2c3e50;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.var_nav:hover a {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+   transition: all .5s ease-in-out;
+}
+.icon {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  color: #fff;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  float: left;
+  transition: all .5s ease-in-out;
+  float: left;
+}
+.item-menu:hover, .item-menu:after, .item-menu:focus {
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+}
+.icon i {
+  top: 22px;
+  position: relative;
+}
+.item-menu {
+  display: block;
+  position: absolute;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+}
+.menu-item-cs {
+  margin-top: 10px;
+  display: block;
+}

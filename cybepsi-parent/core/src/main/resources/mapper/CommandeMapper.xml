@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.epsi.cybepsi.core.dao.CommandeDao">
+  
+ <resultMap id="Commande_ResultMap" type="com.epsi.cybepsi.core.entite.Commande">
+		<id property="id" column="idCommande" />
+		<result property="date" column="dateCommande" />
+		<result property="etat" column="etatCommande" />
+		<result property="email_client" column="emailClient" />
+		<result property="login_anonyme" column="loginAnonyme" />
+		<association property=""></association>
+</resultMap>
+		
+  	
+  	<select id="getCommandesByClient" parameterType="String" resultMap="Commande_ResultMap">
+		SELECT  idCommande, dateCommande,  etatCommande, emailClient, loginAnonyme
+		FROM  Commande 
+		WHERE emailClient =  #{emailClient}
+  	</select>
+  	
+  	<insert id="insertCommande">
+		INSERT INTO Commande(dateCommande, etatCommande, emailClient, loginAnonyme)
+		VALUES
+			(#{date}, #{etat}, #{email_client}, #{login_anonyme})
+  	</insert>
+	
+	  	<select id="getCommande" parameterType="int" resultMap="Commande_ResultMap">
+		SELECT  idCommande, dateCommande,  etatCommande, emailClient, loginAnonyme
+		FROM  Commande 
+		WHERE emailClient =  #{id}
+  	</select>
+
+	
+</mapper>

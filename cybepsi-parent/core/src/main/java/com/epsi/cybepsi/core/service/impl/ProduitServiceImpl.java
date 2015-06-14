@@ -1,4 +1,4 @@
-package com.epsi.cybepsi.core.service;
+package com.epsi.cybepsi.core.service.impl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.epsi.cybepsi.core.dao.ProduitDao;
 import com.epsi.cybepsi.core.entite.Produit;
-
+import com.epsi.cybepsi.core.service.ProduitService;
 
 @Service
 public class ProduitServiceImpl implements ProduitService {
@@ -24,6 +24,12 @@ public class ProduitServiceImpl implements ProduitService {
 	@Override
 	public List<Produit> getAllProduits() {
 		return produitDao.getAllProduits();
+	}
+
+	@Override
+	public void insertProduit(Produit produit) {
+		produitDao.insertProduit(produit);
+		
 	}
 
 }

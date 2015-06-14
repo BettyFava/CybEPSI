@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.epsi.cybepsi.core.dao.PanierDao">
+    
+ <resultMap id="Panier_ResultMap" type="com.epsi.cybepsi.core.entite.Panier">
+		<id property="idPanier" column="{idCommande=idCommande, idProduit=idProduit}" /> 
+		<result property="quantiteProduit" column="quantiteProduit" />
+		<result property="remiseProduit" column="remiseProduit" />
+		<result property="prixVenteUnitaire" column="prixVenteUnitaire" />
+</resultMap>
+
+
+	<insert id="creerPanier" parameterType="String" >
+     INSERT INTO Commande (dateCommande, etatCommande, emailClient) VALUES
+(CURRENT_TIMESTAMP, 'En cours', #{emailClient});
+  </insert>
+  
+  
+    <delete id="removeProduit">
+		DELETE FROM CommandeProduit
+		WHERE idCommande = #{idCommande} AND idProduit = #{idProduit}
+	</delete>
+
+
+  <insert id="insertProduit">
+   INSERT INTO CommandeProduit(quantiteProduit, remiseProduit, prixVenteUnitaire, idCommande,idProduit)
+    VALUES(#{quantite}, 0, #{prixVenteUnitaire}, #{idCommande}, #{idProduit})
+  </insert>
+
+</mapper>

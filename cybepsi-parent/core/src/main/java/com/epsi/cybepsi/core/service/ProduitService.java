@@ -6,11 +6,12 @@ import com.epsi.cybepsi.core.entite.Produit;
 
 
 public interface ProduitService {
-	
 
-		public Produit getProduitById(Integer idProduit);
+	public void insertProduit(Produit produit);
 
-		public List<Produit> getAllProduits();
+	public Produit getProduitById(Integer idProduit);
+
+	public List<Produit> getAllProduits();
 
 	}
 

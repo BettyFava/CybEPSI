@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.epsi.cybepsi.core.dao.SousCategorieDao">
+
+<resultMap id="SousCategorie_ResultMap" type="com.epsi.cybepsi.core.entite.SousCategorie">
+		<id property="id" column="idSousCategorieProduit" />
+		<result property="libelle" column="libelle" />
+		<association property="categorie" column="idCategorieProduit" javaType="Categorie" select="getCategorie"/>
+		</resultMap>
+		
+
+		
+  <select id="getSousCategorie" parameterType="int" resultMap="SousCategorie_ResultMap">
+     SELECT 
+    	idSousCategorieProduit, libelle
+     FROM SousCategorieProduit
+     WHERE idSousCategorieProduit = #{id}
+  </select>
+  
+    <select id="getAllSousCategoriesByCategorie" parameterType="int" resultMap="SousCategorie_ResultMap">
+     SELECT 
+    	idSousCategorieProduit, libelle
+     FROM SousCategorieProduit
+     WHERE idCategorieProduit = #{idCat}
+  </select>
+  
+
+</mapper>
