@@ -14,11 +14,11 @@ import com.epsi.cybepsi.core.service.CommandeService;
 import com.epsi.cybepsi.core.service.PanierService;
 import com.epsi.cybepsi.core.service.ProduitService;
 
-@RequestMapping ("cybepsi")
+
 @Controller
 public class IndexController {
 
-	
+	//appelle aux services si cela est nécessaire
 	@Autowired
 	ProduitService produitService;
 	@Autowired
@@ -30,17 +30,30 @@ public class IndexController {
 	@Autowired
 	ClientService clientService;
 	
-	
-	 @RequestMapping("/")
+	//ensemble des mappings pour permettre la navigation aisée entre les pages
+	@RequestMapping (value ={"cybepsi","index"})
 	    public String index() {
-		 	List<Produit> produits = produitService.getAllProduits();
-		 	Produit test=produitService.getProduitById(1);
-		 	List<SousCategorie> testCat = categorieService.getAllSousCategorie(1); 
 		 	
 	        return "index";
-
-
 	}
+
+	 @RequestMapping ("home")
+		    public String home() {
+
+		        return "home";
+	}
+	 
+	 @RequestMapping ("contact")
+	    public String contact() {
+
+	        return "contact";
+}
+	 
+	 @RequestMapping ("about")
+	    public String about() {
+
+	        return "about";
+}
 }
 
 

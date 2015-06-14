@@ -21,6 +21,40 @@ body {
   height: 100%;
   overflow-y: auto;
 }
+.btn-delete-modal {
+  margin-left: 45px;
+}
+.total-panier {
+  left: -80px;
+  top: -7px;
+  font-size: 20px;
+}
+.btn-command {
+  margin-left: 30px;
+}
+.header-panier {
+  padding: 10px 0;
+}
+.contenu-un-panier {
+  text-align: left;
+  height: 138px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-left: 10px;
+  width: 330px;
+  background-color: white;
+  border-bottom: 2px solid rgb(195, 195, 195);
+}
+.a-img {
+}
+.a-title {
+  float: left;
+}
+.a-content {
+  margin-top: 7px;
+  width: 60%;
+  float: right;
+}
 .contenu-panier {
   height: 480px;
   width: 330px;
@@ -29,7 +63,7 @@ body {
   z-index: 99;
   display: none;
   margin-top: 31px;
-  padding-top: 50px;
+  padding-top: 00px;
   border: 4px solid #2c3e50;
   border-radius: 10px;
   position: relative;
